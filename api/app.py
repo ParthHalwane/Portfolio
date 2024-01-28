@@ -21,14 +21,14 @@ def index():
 def send_email():
     if request.method == 'POST':
         recipient_email = 'parthhalwane@gmail.com' 
-        subject=request.form['subject'] 
+        subjects=request.form['subject'] 
         sender_name = request.form['name']
         sender_email = request.form['email']
         message_body = request.form['message']
 
-        message = Message(subject=f'New message from {sender_name}',
+        message = Message(subject=f'{sender_name}',
                           recipients=[recipient_email],
-                          body=f"Sender: {sender_name}\nEmail: {sender_email}\n\n{message_body}")
+                          body=f"Sender: {sender_name}\nEmail: {sender_email}\nSubject: {subjects}\n\n{message_body}")
 
         mail.send(message)
         return render_template('index.html', message = 'Please enter the correct password',message_sent='success')
