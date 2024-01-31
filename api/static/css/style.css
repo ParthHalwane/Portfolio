@@ -981,3 +981,11 @@ footer span a:hover {
         transform: translateX(-215vw);
     }
 }
+
+i{
+    color: white
+}
+i:hover
+{
+    color: rgb(0, 0, 0);
+}
