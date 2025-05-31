@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USERNAME'] = 'ab45xy45@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'vher bdzv city fcuj'  
-app.config['MAIL_DEFAULT_SENDER'] = 'ab45xy45@gmail.com'  
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
